@@ -1,0 +1,47 @@
+﻿@model BusinessIdea
+
+<h2>Agregar Idea de Negocio</h2>
+
+<form asp-action="Add" method="post">
+    <div>
+        <label for="Name">Nombre de la Idea:</label>
+        <input asp-for="Name" required />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label for="Impact">Impacto Social o Económico:</label>
+        <textarea asp-for="Impact" required></textarea>
+        <span asp-validation-for="Impact"></span>
+    </div>
+    <div>
+        <label for="BenefitedDepartments">Departamentos Beneficiados:</label>
+        <input asp-for="BenefitedDepartments[0].Name" placeholder="Nombre del Departamento" required />
+        <input asp-for="BenefitedDepartments[0].Id" placeholder="Código del Departamento" required />
+    </div>
+
+    <div>
+        <label for="InvestmentValue">Valor de la Inversión:</label>
+        <input asp-for="InvestmentValue" type="number" required />
+        <span asp-validation-for="InvestmentValue"></span>
+    </div>
+    <div>
+        <label for="TotalIncomeIn3Years">Ingresos Totales (primeros 3 años):</label>
+        <input asp-for="TotalIncomeIn3Years" type="number" required />
+        <span asp-validation-for="TotalIncomeIn3Years"></span>
+    </div>
+    <div>
+        <label for="TeamMembers">Integrantes del Equipo:</label>
+        <input asp-for="TeamMembers[0].Identification" placeholder="Identificación" required />
+        <input asp-for="TeamMembers[0].FirstName" placeholder="Nombre" required />
+        <input asp-for="TeamMembers[0].LastName" placeholder="Apellidos" required />
+        <input asp-for="TeamMembers[0].Role" placeholder="Rol en el emprendimiento" required />
+        <input asp-for="TeamMembers[0].Email" placeholder="Email" required type="email" />
+    </div>
+    <div>
+        <label for="UsedTools">Herramientas de la 4RI Utilizadas:</label>
+        <input asp-for="Tools4IR[0]" placeholder="Herramienta" required />
+    </div>
+    <div>
+        <input type="submit" value="Agregar Idea" />
+    </div>
+</form>

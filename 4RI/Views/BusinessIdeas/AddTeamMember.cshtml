@@ -1,0 +1,12 @@
+﻿@model _4RI.Models.TeamMember
+<form asp-action="AddTeamMember" method="post">
+    <input type="hidden" name="businessIdeaId" value="@ViewBag.BusinessIdeaId" />
+
+    <input asp-for="Identification" placeholder="Identificación" required />
+    <input asp-for="FirstName" placeholder="Nombre" required />
+    <input asp-for="LastName" placeholder="Apellido" required />
+    <input asp-for="Role" placeholder="Rol" required />
+    <input asp-for="Email" placeholder="Email" required />
+
+    <input type="submit" value="Agregar Integrante" />
+</form>

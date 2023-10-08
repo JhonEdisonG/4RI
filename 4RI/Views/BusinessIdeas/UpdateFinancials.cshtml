@@ -1,0 +1,15 @@
+﻿@model _4RI.Models.BusinessIdea
+
+<h2>Actualizar Finanzas</h2>
+
+<form asp-action="UpdateFinancials" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <label for="InvestmentValue">Valor de Inversión:</label>
+    <input type="text" asp-for="InvestmentValue" />
+
+    <label for="TotalIncomeIn3Years">Ingresos en 3 Años:</label>
+    <input type="text" asp-for="TotalIncomeIn3Years" />
+
+    <input type="submit" value="Actualizar" />
+</form>

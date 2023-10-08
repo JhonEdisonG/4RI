@@ -1,0 +1,99 @@
+﻿@model _4RI.Models.BusinessStatisticsViewModel
+
+<h2>Estadísticas de Ideas de Negocio</h2>
+
+<h3>Idea que impacta a más departamentos:</h3>
+@if (Model.IdeaWithMostDepartments != null)
+{
+    <p>Nombre: @Model.IdeaWithMostDepartments.Name</p>
+    <p>Total de departamentos impactados: @Model.IdeaWithMostDepartments.BenefitedDepartments.Count</p>
+}
+else
+{
+    <p>No hay datos disponibles</p>
+}
+<hr />
+
+<h3>Idea con mayor ingreso en 3 años:</h3>
+@if (Model.IdeaWithHighestIncome != null)
+{
+    <p>Nombre: @Model.IdeaWithHighestIncome.Name</p>
+    <p>Ingresos totales: @Model.IdeaWithHighestIncome.TotalIncomeIn3Years</p>
+}
+else
+{
+    <p>No hay datos disponibles</p>
+}
+<hr />
+
+<h3>Top 3 ideas más rentables:</h3>
+@if (Model.Top3ProfitableIdeas.Any())
+{
+    <ol>
+        @foreach (var idea in Model.Top3ProfitableIdeas)
+        {
+            <li>@idea.Name - Rentabilidad: @(idea.TotalIncomeIn3Years - idea.InvestmentValue)</li>
+        }
+    </ol>
+}
+else
+{
+    <p>No hay datos disponibles</p>
+}
+<hr />
+
+<h3>Ideas que impactan a más de 3 departamentos:</h3>
+@if (Model.IdeasImpactingMoreThan3Depts.Any())
+{
+    <ul>
+        @foreach (var idea in Model.IdeasImpactingMoreThan3Depts)
+        {
+            <li>@idea.Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No hay datos disponibles</p>
+}
+<hr />
+
+<h3>Suma total de ingresos de todas las ideas de negocio:</h3>
+<p>@Model.TotalIncome</p>
+<hr />
+
+<h3>Suma total de inversión de todas las ideas de negocio:</h3>
+<p>@Model.TotalInvestment</p>
+<hr />
+
+<h3>Idea con más herramientas 4RI:</h3>
+@if (Model.IdeaWithMost4RITools != null)
+{
+    <p>Nombre: @Model.IdeaWithMost4RITools.Name</p>
+    <p>Cantidad de herramientas: @Model.IdeaWithMost4RITools.Tools4IR.Count</p>
+}
+else
+{
+    <p>No hay datos disponibles</p>
+}
+<hr />
+
+<h3>Cantidad de ideas de negocio que utilizan Inteligencia Artificial:</h3>
+<p>@Model.CountOfAIUse</p>
+<hr />
+
+<h3>Ideas de negocio con "Desarrollo sostenible" en su impacto:</h3>
+@if (Model.IdeasWithSustainableDevelopment.Any())
+{
+    <ul>
+        @foreach (var idea in Model.IdeasWithSustainableDevelopment)
+        {
+            <li>@idea.Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No hay datos disponibles</p>
+}
+<hr />

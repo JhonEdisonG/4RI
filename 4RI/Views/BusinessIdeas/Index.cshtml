@@ -1,0 +1,45 @@
+﻿@model List<_4RI.Models.BusinessIdea>
+
+<h2>Lista de Ideas de Negocio</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre de la Idea</th>
+            <th>Impacto</th>
+            <th>Valor de Inversión</th>
+            <th>Ingresos en 3 Años</th>
+            <th>Herramientas de 4RI</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var idea in Model)
+        {
+            <tr>
+                <td>@idea.Id</td>
+                <td>@idea.Name</td>
+                <td>@idea.Impact</td>
+                <td>@idea.InvestmentValue</td>
+                <td>@idea.TotalIncomeIn3Years</td>
+                <td>
+                    @foreach (var tool in idea.Tools4IR)
+                    {
+                        @tool <br />
+                    }
+                </td>
+                <td>
+                    <a asp-action="AddTeamMember" asp-route-businessIdeaId="@idea.Id">Agregar Integrante</a> |
+                    <a asp-action="RemoveTeamMember" asp-route-businessIdeaId="@idea.Id">Eliminar Integrante</a> |
+                    <a asp-action="UpdateFinancials" asp-route-businessIdeaId="@idea.Id">Actualizar Finanzas</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="statistics-link">
+    <a href="@Url.Action("BusinessStatistics", "BusinessIdeas")" class="btn btn-primary">Ver Estadísticas</a>
+</div>
+<hr>
+<a asp-action="Add">Añadir Nueva Idea de Negocio</a>

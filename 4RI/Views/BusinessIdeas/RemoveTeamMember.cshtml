@@ -1,0 +1,13 @@
+﻿@model List<_4RI.Models.TeamMember>
+
+@foreach(var member in Model)
+{
+    <div>
+        @member.FirstName @member.LastName - @member.Role
+        <form asp-action="DeleteTeamMember" method="post" style="display:inline;">
+            <input type="hidden" name="businessIdeaId" value="@ViewBag.BusinessIdeaId" />
+            <input type="hidden" name="memberId" value="@member.Identification" />
+            <input type="submit" value="Eliminar" />
+        </form>
+    </div>
+}
